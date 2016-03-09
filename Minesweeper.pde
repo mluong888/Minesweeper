@@ -42,9 +42,10 @@ public void setBombs()
 
 public void draw ()
 {
-    background( 0 );
-    if(isWon())
+    background(0);
+    if(isWon()==true)
         displayWinningMessage();
+    
 }
 public boolean isWon()
 {
@@ -53,16 +54,21 @@ public boolean isWon()
             if(!bombs.contains(buttons[i][j])&&!buttons[i][j].isClicked())
                 return false;
     //your code here
-    return false;
+    return true;
 }
 public void displayLosingMessage()
 {
-    //your code here
+    for(int i=0;i<NUM_ROWS;i++)
+      for(int j=0;j<NUM_COLS;j++)
+        if(bombs.contains(buttons[i][j]))
+                buttons[i][j].setLabel("B");
+                fill(0);
+                text("You Lost!",200,200);
 }
 public void displayWinningMessage()
 {
     fill(255);
-    text("You Won",200,200);
+    text("You Won",200,450);
     //your code here
 }
 
